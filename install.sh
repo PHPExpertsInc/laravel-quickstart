@@ -1,8 +1,35 @@
 #!/bin/bash
+################################################################
+#   The Laravel QuickStart Project                             #
+#   https://github.com/phpexpertsinc/laravel_quickstart        #
+#   License: MIT                                               #
+#                                                              #
+#   Copyright © 2018 PHP Experts, Inc. <sales@phpexperts.pro>  #
+#       Author: Theodore R. Smith <theodore@phpexperts.pro>    #
+#      PGP Sig: 4BF826131C3487ACD28F2AD8EB24A91DD6125690       #
+################################################################
 
 clear
-printf "Welcome to the Laravel QuickStart installation!\n"
-printf "    A PHP Experts, Inc., Project.\n\n"
+
+# Use the magic $SECONDS variable for time tracking.
+SECONDS=0
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+printf "${GREEN}"
+echo "################################################################"
+echo '#   The Laravel QuickStart Project                             #'
+echo '#   https://github.com/phpexpertsinc/laravel_quickstart        #'
+echo '#   License: MIT                                               #'
+echo '#                                                              #'
+echo '#   Copyright © 2018 PHP Experts, Inc. <sales@phpexperts.pro>  #'
+echo '#       Author: Theodore R. Smith <theodore@phpexperts.pro>    #'
+echo '#      PGP Sig: 4BF826131C3487ACD28F2AD8EB24A91DD6125690       #'
+echo '################################################################'
+printf "${NC}\n"
+
 
 if [ "$1" == "--help" ] || [ "$1" == "help" ];
 then
@@ -124,4 +151,7 @@ php artisan db:seed
 
 printf "\n"
 echo "All done!"
+echo ""
+
+echo "Total setup only took ${SECONDS} seconds!!"
 echo ""
