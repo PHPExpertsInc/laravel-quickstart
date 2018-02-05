@@ -125,21 +125,25 @@ then
     eval ${COMMAND}
 fi
 
+echo "Making bootstrap/cache/ and storage/ writeable..."
+find bootstrap/cache -type d | xargs setfacl -Rm d:u:$USER:rwx -Rm u:$USER:rwx
+find bootstrap/cache -type d | xargs setfacl -Rm d:u:http:rwx -Rm u:http:rwx
+
+find storage -type d | xargs setfacl -Rm d:u:$USER:rwx -Rm u:$USER:rwx
+find storage -type d | xargs setfacl -Rm d:u:http:rwx -Rm u:http:rwx
+
+printf "\n\n"
 echo "Launching the docker containers..."
 containers down
 containers up -d
 
 printf "\n\n"
-echo "Making bootstrap/cache/ and storage/ writeable..."
-chmod -v 0777 bootstrap/cache storage storage/*
+echo "Installing composer dependencies..."
+composer install
 
 printf "\n\n"
 echo "Generating a new Laravel site key..."
 php artisan key:generate
-
-printf "\n\n"
-echo "Installing composer dependencies..."
-composer install
 
 printf "\n\n"
 echo "Running database migrations..."
