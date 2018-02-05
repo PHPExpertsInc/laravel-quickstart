@@ -1,5 +1,15 @@
 version: '2'
 
+################################################################
+#   The DockerPHP Project                                      #
+#   https://github.com/phpexpertsinc/docker-php                #
+#   License: MIT                                               #
+#                                                              #
+#   Copyright © 2018 PHP Experts, Inc. <sales@phpexperts.pro>  #
+#       Author: Theodore R. Smith <theodore@phpexperts.pro>    #
+#      PGP Sig: 4BF826131C3487ACD28F2AD8EB24A91DD6125690       #
+################################################################
+
 services:
   web:
     image: phpexperts/web:nginx-php7.2

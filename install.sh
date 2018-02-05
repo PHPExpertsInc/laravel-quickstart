@@ -1,4 +1,13 @@
 #!/bin/bash
+################################################################
+#   The Laravel QuickStart Project                             #
+#   https://github.com/phpexpertsinc/laravel_quickstart        #
+#   License: MIT                                               #
+#                                                              #
+#   Copyright © 2018 PHP Experts, Inc. <sales@phpexperts.pro>  #
+#       Author: Theodore R. Smith <theodore@phpexperts.pro>    #
+#      PGP Sig: 4BF826131C3487ACD28F2AD8EB24A91DD6125690       #
+################################################################
 
 clear
 printf "Welcome to the Laravel QuickStart installation!\n"
