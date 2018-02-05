@@ -13,6 +13,33 @@ then
     exit
 fi
 
+path_check() {
+
+    # Ensure that the ./bin is in the path.
+    RAND_BIN=rand448844.sh
+    touch ./bin/${RAND_BIN}
+    chmod 0755 ./bin/${RAND_BIN}
+
+    if ! [ -x "$(command -v ${RAND_BIN})" ]; then
+        echo "Error: You must add ${PWD}/bin to your PATH..."
+        echo ""
+        echo "       We recommend running the following commands:"
+        echo ""
+        echo "           echo 'export PATH=${PWD}/bin:\$PATH' >> ~/.bashrc"
+        echo "           source ~/.bashrc"
+        echo "           hash -r"
+        echo ""
+        echo "       Then re-run this installation utility."
+        echo ""
+
+        exit
+    fi
+
+    rm -f ./bin/${RAND_BIN}
+}
+
+path_check
+
 if [ "$#" == 6 ]; then
     APP_NAME=$1
     APP_URL=$2
