@@ -11,6 +11,9 @@
 
 clear
 
+# Use the magic $SECONDS variable for time tracking.
+SECONDS=0
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
@@ -148,4 +151,7 @@ php artisan db:seed
 
 printf "\n"
 echo "All done!"
+echo ""
+
+echo "Total setup only took ${SECONDS} seconds!!"
 echo ""
