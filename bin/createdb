@@ -2,14 +2,14 @@
 
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
+. "${ROOT}"/.env
 . "${ROOT}"/docker/lib/env.sh
-
 . "${ROOT}"/docker/lib/network.sh
 
 docker run \
     --net ${PROJECT_NAME}_default \
-    -it \
+    -e PGPASSWORD="${DB_PASSWORD}" \
     --volume ~/.pgpass:/root/.pgpass \
     -v $(pwd):/data \
     postgres:9.6 \
-    createdb --host=db "$@"
+    sh -c "createdb --host=db $@"

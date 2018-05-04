@@ -3,7 +3,6 @@
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 . "${ROOT}"/docker/lib/env.sh
-
 . "${ROOT}"/docker/lib/network.sh
 . "${ROOT}"/.env
 
@@ -14,4 +13,4 @@ docker run \
     --volume ~/.pgpass:/root/.pgpass \
     -v $(pwd):/data \
     postgres:9.6 \
-    psql --host=db --dbname=postgres "$@"
+    sh -c "psql --host=db --dbname=postgres $@"
