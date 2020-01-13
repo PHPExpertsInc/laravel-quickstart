@@ -1,4 +1,5 @@
-version: '2'
+version: '3.6'
+# Requires Docker v18.02 or higher.
 
 ################################################################
 #   The DockerPHP Project                                      #
@@ -18,17 +19,22 @@ services:
     links:
       - db
     volumes:
-      - ..:/var/www
+      - .:/var/www
+      - ./docker/web:/etc/nginx/custom
+    ports:
+      - 80:80
 
   db:
     image: postgres:9.6
     volumes:
       - /var/lib/docker/postgresql:/var/lib/postgresql
+    ports:
+      - 5432:5432
 
     environment:
       POSTGRES_USER: root
-      POSTGRES_PASSWORD: Wqosrzcp!PGbQ2Wa5w6
-      POSTGRES_DB: quickstart
+      POSTGRES_PASSWORD: dqgK6vR9%
+      POSTGRES_DB: calendar
 
   redis:
     image: redis:3.2.6
@@ -36,4 +42,3 @@ services:
       - redis-server
       - --requirepass ${REDIS_PASSWORD}
       - --loglevel notice
-
