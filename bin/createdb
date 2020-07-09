@@ -11,5 +11,5 @@ docker run \
     -e PGPASSWORD="${DB_PASSWORD}" \
     --volume ~/.pgpass:/root/.pgpass \
     -v $(pwd):/data \
-    postgres:9.6 \
+    postgres:12.3 \
     sh -c "createdb --host=db $@"

@@ -25,7 +25,7 @@ services:
       - 80:80
 
   db:
-    image: postgres:9.6
+    image: postgres:12.3
     volumes:
       - /var/lib/docker/postgresql:/var/lib/postgresql
     ports:

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+. "${ROOT}"/docker/lib/env.sh
+
+. "${ROOT}"/docker/lib/network.sh
+
+docker run --rm -v $(pwd):/project rector/rector:latest "$@"
+
