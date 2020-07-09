@@ -34,7 +34,7 @@ installation video!
 1. Shortens the time to start a fresh Laravel site from 1-3 hours to 3-5 minutes. 
 2. Full dockerized webstack ready for deployment on either dev boxes or docker 
    cloud hosts, like Google App Engine. 
-3. Uses the latest version of PHP, v7.2.2. 
+3. Uses the latest version of PHP, v7.4. 
 4. Instantly available, pre-configured Laravel installation, using PostgreSQL and Redis. 
 5. Template layouts are already installed. 
 6. Laravel's authentication system is already installed and configured. 
