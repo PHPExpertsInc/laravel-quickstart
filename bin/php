@@ -2,8 +2,21 @@
 
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
-. "${ROOT}"/docker/lib/env.sh
+if [ -z "$PROJECT_NAME" ]; then
+    PROJECT_NAME=$(basename $ROOT | tr '[:upper:]' '[:lower:]' | sed "s/[^[:alpha:]-]//g")
+fi
+if [ -z "$NETWORK_NAME" ]; then
+    NETWORK_NAME=${PROJECT_NAME}_default
+fi
 
-. "${ROOT}"/docker/lib/network.sh
+if [ -z "$PHP_VERSION" ]; then
+    PHP_VERSION="7.4-debug"
+fi
 
-docker run -u=$UID -v /etc/passwd:/etc/passwd:ro --network="${PROJECT_NAME}_default" -e LOCAL_USER_ID=${DOCKER_HOST_USER_ID} -it -v $(pwd):/workdir --rm --entrypoint=/usr/bin/php phpexperts/php:7 "$@"
+# Test if the network exists.
+docker network inspect $NETWORK_NAME > /dev/null 2>&1
+if [ $? == 0 ]; then
+  docker run -u=$UID -v /etc/passwd:/etc/passwd:ro --network="$NETWORK_NAME" -it -v $(pwd):/workdir --rm phpexperts/php:${PHP_VERSION} "$@"
+else
+  docker run -u=$UID -v /etc/passwd:/etc/passwd:ro -it -v $(pwd):/workdir --rm phpexperts/php:${PHP_VERSION} "$@"
+fi
