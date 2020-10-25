@@ -14,6 +14,8 @@ Now it is!
 
 **tl;dr:** To get started, just do this:
 
+    composer create-project phpexperts/laravel-quickstart projectname
+
     git clone https://github.com/phpexpertsinc/laravel_quickstart.git
     cd laravel_quickstart 
     ./install.sh
