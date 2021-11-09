@@ -25,19 +25,19 @@ services:
       - 80:80
 
   db:
-    image: postgres:12.3
+    image: postgres:14
     volumes:
-      - /var/lib/docker/postgresql:/var/lib/postgresql
-    ports:
-      - 5432:5432
+      - /var/lib/docker/postgresql-${APP_NAME}:/var/lib/postgresql
+#    ports:
+#      - 5432:5432
 
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: dqgK6vR9%
-      POSTGRES_DB: calendar
+      POSTGRES_USER: "${DB_USERNAME}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "${DB_DATABASE}"
 
   redis:
-    image: redis:3.2.6
+    image: redis:6
     entrypoint:
       - redis-server
       - --requirepass ${REDIS_PASSWORD}
