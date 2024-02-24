@@ -8,18 +8,12 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=7.3",
-        "fideloper/proxy": "^4.0",
-        "fruitcake/laravel-cors": "^2.0",
-        "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.0"
+        "php": ">=8.3",
+        "laravel/framework": "^10.0",
+        "laravel/ui": "*"
     },
     "require-dev": {
         "filp/whoops": "*",
-        "fakerphp/faker": "*",
-        "mockery/mockery": "*",
-        "nunomaduro/collision": "*",
         "phpexperts/dockerize": "*",
         "phpunit/phpunit": "^9.0"
     },
